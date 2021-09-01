@@ -1,0 +1,13 @@
+Bootstrap: docker
+
+From: registry.cmbi.umcn.nl/x-omics-action-dataset/fairification-tools/isa_singularity
+
+%post
+	echo ". /opt/conda/etc/profile.d/conda.sh" >> $SINGULARITY_ENVIRONMENT
+	echo "conda activate isa_env" >> $SINGULARITY_ENVIRONMENT
+
+%runscript
+	mv /isa_parse.ipynb /isa_workdir
+	. /opt/conda/etc/profile.d/conda.sh
+	conda activate isa_env
+	jupyter notebook --ip="*" --no-browser --allow-root --port=8888 --notebook-dir=/isa_workdir/
