@@ -1,2 +1,112 @@
 # Isatools_environment
 Computational environment to work with Isatools
+
+# Contribution Guidelines
+
+Contribution to this repository is much appreciated. In order to keep the repository clear and structured, we have a few guidelines:
+
+- If you want to add a feature or see coding parts that can be improved, create a new branch according to the [naming conventions](https://codingsight.com/git-branching-naming-convention-best-practices/)
+- Use descriptive commit names
+
+# Content
+
+This repository is made to demonstrate how to create a virtual environment (conda) and container (Docker) that provides all necessary software to work with ISA-tab files. A template is present on how to work create/modify ISA-tab files.
+
+## File structure
+
+### /Docker
+
+Directory containg all files needed to build to Docker image. The `Dockerfile` must be used to build the Docker container. It defines the container's content and structure. The `isa_env.yml` file is needed to build the conda environment inside the container. The `isa_parse.ipynb` file is a Jupyter notebook file that demonsrates how to parse ISA-Tab files with isatools. 
+
+### /Docker_setup
+
+This directory contains files that describe all steps that have been done prepatory for this repository.vThe `create_isa_env_yml.sh` file was used to create the conda environment (isa_env) and export this environment to a .yml file, which is used to build the Docker container. The `Push_docker_registry.sh` file describes how the isa/jupyter image was pushed to the registry.
+
+### /Flowchart
+
+Directory containing .png files of flowcharts that give a schematic overview of the Docker container
+
+### /Singularity
+
+Directory containing the components to build the Singularity container (which can be used in the exact same way as the Docker container). The `Dockerfile` must be used to build the Docker container. It defines the container's content and structure. The `isa_env.yml` file is needed to build the conda environment inside the container. The `isa_parse.ipynb` file is a Jupyter notebook file that demonsrates how to parse ISA-Tab files with isatools. The `isa.def` file is the Singularity definition file, which must be used to build the singularity container.
+
+# How to use the Docker container
+
+### Build Docker from repo (requires internet connection)
+```
+cd Docker/
+Docker build -t isa/jupyter .
+```
+
+### Run Docker Container
+```
+docker run -it -v $(volume):/isa_container/volume -p 8888:8888 isa/jupyter
+```
+
+- **$(volume)** is the absolute path to directory where you store input data. Example input: `~/ngms-isa-casperdevisser/Example_input/MTBLS1437_compressed_files`
+
+- Open `localhost:8888` in a browser (outside of the docker). 
+
+- If running the container inside the Windows DRE, use the ip-adress that is returned by the command `docker-machine ip`. For example: `xxx.xxx.xx.xx:8888`. 
+
+- If token is required for login, copy paste the token that can be found in one of the URLs that is given as output after the docker run command. 
+
+Now you can use isatools
+# Flowchart
+## Building the Docker image
+
+![Docker build](./Flowchart/ISA_docker_build.png "Build ISA-Docker image")
+
+## Using the ISA-Docker container
+
+![Docker run](./Flowchart/ISA_docker_run.png "Run ISA-Docker container")
+
+# Commit changes to Docker container (and create new image)
+
+Run container in background and print CONTAINER_ID
+
+```
+docker run -it -d isa/jupyter
+```
+
+Run image iteractively (use the CONTAINER_ID that was printed with the previous command)
+
+```
+docker exec -it CONTAINER_ID bash
+```
+
+Once inside the container, install new packages to the conda environment:
+ ```
+ conda activate isa_env
+ conda install numpy
+ ```
+
+Exit the container:
+
+```
+exit
+```
+
+Commit the changes on your local PC terminal and give image new tag (currently, we use the date at the moment of pushing as tag name):
+
+```
+docker commit -m "<describe changes made to container>" CONTAINER_ID isa/jupyter:<new_tag_name> #for example: 12_08_21
+```
+
+[More information](https://www.techrepublic.com/article/how-to-commit-changes-to-a-docker-image/)
+
+# Run Singularity container
+
+Build from isa.def:
+
+```
+cd Singularity
+sudo singularity build isa.sif isa.def
+```
+
+Run container:
+
+```
+sudo singularity run --bind /home/<user.name>@mydre.org/isa_action/notebooks:/isa_workdir isa.sif
+```
+Opening the lnk to the Jupyter notebook requires the exact same steps as with the Docker image (see 'Run Docker Container' above)
