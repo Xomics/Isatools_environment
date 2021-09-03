@@ -20,7 +20,7 @@ Directory containg all files needed to build to Docker image. The `Dockerfile` m
 
 ### /Docker_setup
 
-This directory contains files that describe all steps that have been done prepatory for this repository.vThe `create_isa_env_yml.sh` file was used to create the conda environment (isa_env) and export this environment to a .yml file, which is used to build the Docker container. The `Push_docker_registry.sh` file describes how the isa/jupyter image was pushed to the registry.
+This directory contains files that describe all steps that have been done prepatory for this repository.vThe `create_isa_env_yml.sh` file was used to create the conda environment (isa_env) and export this environment to a .yml file, which is used to build the Docker container. The `Push_docker_registry.sh` file describes how the casperdevisser/isatools_environment image was pushed to the registry.
 
 ### /Flowchart
 
@@ -35,12 +35,18 @@ Directory containing the components to build the Singularity container (which ca
 ### Build Docker from repo (requires internet connection)
 ```
 cd Docker/
-Docker build -t isa/jupyter .
+Docker build -t casperdevisser/isatools_environment .
+```
+
+### Pull Docker image from DockerHub
+
+```
+docker pull casperdevisser/isatools_environment:latest
 ```
 
 ### Run Docker Container
 ```
-docker run -it -v $(volume):/isa_container/volume -p 8888:8888 isa/jupyter
+docker run -it -v $(volume):/isa_container/volume -p 8888:8888 casperdevisser/isatools_environment
 ```
 
 - **$(volume)** is the absolute path to directory where you store input data. Example input: `~/ngms-isa-casperdevisser/Example_input/MTBLS1437_compressed_files`
@@ -66,7 +72,7 @@ Now you can use isatools
 Run container in background and print CONTAINER_ID
 
 ```
-docker run -it -d isa/jupyter
+docker run -it -d isatools_environment
 ```
 
 Run image iteractively (use the CONTAINER_ID that was printed with the previous command)
@@ -90,7 +96,7 @@ exit
 Commit the changes on your local PC terminal and give image new tag (currently, we use the date at the moment of pushing as tag name):
 
 ```
-docker commit -m "<describe changes made to container>" CONTAINER_ID isa/jupyter:<new_tag_name> #for example: 12_08_21
+docker commit -m "<describe changes made to container>" CONTAINER_ID casperdevisser/isatools_environment:<new_tag_name> #for example: 12_08_21
 ```
 
 [More information](https://www.techrepublic.com/article/how-to-commit-changes-to-a-docker-image/)
