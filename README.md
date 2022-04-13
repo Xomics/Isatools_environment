@@ -38,7 +38,7 @@ cd Docker/
 Docker build -t casperdevisser/isatools_environment .
 ```
 
-### Pull Docker image from DockerHub
+### Pull Docker image from DockerHub (currently NOT available)
 
 ```
 docker pull casperdevisser/isatools_environment:latest
