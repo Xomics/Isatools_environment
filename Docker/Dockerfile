@@ -1,9 +1,13 @@
+# Dockerfile VERSION = v0.1
+# docker build -t casperdevisser/isatools_environment:$VERSION . 
+# docker push casperdevisser/isatools_environment:$VERSION
+
 FROM continuumio/miniconda3
 
-LABEL build_data="13-08-2021"
+LABEL build_data="19-04-2022"
 LABEL vendor="Radboudumc, CMBI"
-LABEL usage="https://atlassian-gen.umcn.nl/bitbucket/projects/TML/repos/ngms-isa-casperdevisser/browse"
-LABEL url="https://atlassian-gen.umcn.nl/bitbucket/projects/TML/repos/ngms-isa-casperdevisser/browse"
+LABEL usage="https://github.com/Xomics/Isatools_environment"
+LABEL url="https://github.com/Xomics/Isatools_environment"
 
 WORKDIR /isa_container
 
