@@ -36,7 +36,7 @@ dependencies:
   - libgcc-ng=9.1.0=hdf63c60_0
   - libsodium=1.0.18=h7b6447c_0
   - libstdcxx-ng=9.1.0=hdf63c60_0
-  - markupsafe=1.1.1=py38h7b6447c_0
+  - markupsafe=2.0.1
   - mistune=0.8.4=py38h7b6447c_1000
   - nb_conda=2.2.1=py38_1
   - nb_conda_kernels=2.3.1=py38h06a4308_0

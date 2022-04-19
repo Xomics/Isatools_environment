@@ -7,6 +7,8 @@ LABEL url="https://atlassian-gen.umcn.nl/bitbucket/projects/TML/repos/ngms-isa-c
 
 WORKDIR /isa_container
 
+ARG DEBIAN_FRONTEND=noninteractive
+
 #Installing git and nano
 RUN apt-get update -y 
 RUN apt install git
