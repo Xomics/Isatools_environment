@@ -25,4 +25,4 @@ RUN conda env create -f isa_env.yml
 
 CMD ["/bin/bash"]
 
-ENTRYPOINT ["conda", "run", "--no-capture-output", "-n", "isa_env", "jupyter", "notebook", "--notebook-dir=/isa_container/", "--ip='*'", "--port=8888", "--no-browser", "--allow-root"]
+ENTRYPOINT ["conda", "run", "--no-capture-output", "-n", "isa_env", "jupyter", "notebook", "--notebook-dir=/isa_container/", "--ip=*", "--port=8888", "--no-browser", "--allow-root"]

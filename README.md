@@ -49,7 +49,8 @@ docker pull casperdevisser/isatools_environment:latest
 docker run -it -v $(volume):/isa_container/volume -p 8888:8888 casperdevisser/isatools_environment
 ```
 
-- **$(volume)** is the absolute path to directory where you store input data. Example input: `~/ngms-isa-casperdevisser/Example_input/MTBLS1437_compressed_files`
+- **$(volume)** is the absolute path to directory where you store input data. Example input: `~/ngms-isa-casperdevisser/Example_input/MTBLS1437_compressed_files`. 
+Mount current directory, Windows Command Line: 'docker run -it -v %cd%:/isa_container/volume ...', PowerShell: 'docker run -it -v ${PWD}:/isa_container/volume ...', Linux: 'docker run -it -v $(pwd):/isa_container/volume ...'
 
 - Open `localhost:8888` in a browser (outside of the docker). 
 
