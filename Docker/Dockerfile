@@ -1,10 +1,10 @@
-# Dockerfile VERSION = v0.1
+# Dockerfile VERSION = v0.2
 # docker build -t casperdevisser/isatools_environment:$VERSION . 
 # docker push casperdevisser/isatools_environment:$VERSION
 
 FROM continuumio/miniconda3
 
-LABEL build_data="19-04-2022"
+LABEL build_data="24-05-2022"
 LABEL vendor="Radboudumc, CMBI"
 LABEL usage="https://github.com/Xomics/Isatools_environment"
 LABEL url="https://github.com/Xomics/Isatools_environment"
