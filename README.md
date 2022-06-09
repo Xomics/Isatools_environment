@@ -44,6 +44,10 @@ Docker build -t casperdevisser/isatools_environment .
 docker pull casperdevisser/isatools_environment:latest
 ```
 
+## When working on the Digital Research Environment (DRE):
+
+Pulling from Dockerhub and building from the Dockerfile is not an option in the DRE. However, the Docker image can be uploaded as .tar file to the DRE, where it can be loaded. Instructions on this can be found [here](https://gitlab.cmbi.umcn.nl/x-omics/xomicsdre/-/wikis/Linux/Docker#test-docker-installation-and-transfer-images) (Access restricted to X-omics Gitlab members)
+
 ### Run Docker Container
 ```
 docker run -it -v $(volume):/isa_container/volume -p 8888:8888 casperdevisser/isatools_environment
