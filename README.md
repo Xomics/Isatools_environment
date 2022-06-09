@@ -30,7 +30,7 @@ Directory containing .png files of flowcharts that give a schematic overview of 
 
 Directory containing the components to build the Singularity container (which can be used in the exact same way as the Docker container). The `Dockerfile` must be used to build the Docker container. It defines the container's content and structure. The `isa_env.yml` file is needed to build the conda environment inside the container. The `isa_parse.ipynb` file is a Jupyter notebook file that demonsrates how to parse ISA-Tab files with isatools. The `isa.def` file is the Singularity definition file, which must be used to build the singularity container.
 
-# How to use the Docker container
+## How to get the Docker container
 
 ### Build Docker from repo (requires internet connection)
 ```
@@ -48,7 +48,7 @@ docker pull casperdevisser/isatools_environment:latest
 
 Pulling from Dockerhub and building from the Dockerfile is not an option in the DRE. However, the Docker image can be uploaded as .tar file to the DRE, where it can be loaded. Instructions on this can be found [here](https://gitlab.cmbi.umcn.nl/x-omics/xomicsdre/-/wikis/Linux/Docker#test-docker-installation-and-transfer-images) (Access restricted to X-omics Gitlab members)
 
-### Run Docker Container
+## How to run the Docker Container
 ```
 docker run -it -v $(volume):/isa_container/volume -p 8888:8888 casperdevisser/isatools_environment
 ```
