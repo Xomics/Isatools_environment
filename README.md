@@ -30,9 +30,11 @@ Directory containing .png files of flowcharts that give a schematic overview of 
 
 Directory containing the components to build the Singularity container (which can be used in the exact same way as the Docker container). The `Dockerfile` must be used to build the Docker container. It defines the container's content and structure. The `isa_env.yml` file is needed to build the conda environment inside the container. The `isa_parse.ipynb` file is a Jupyter notebook file that demonsrates how to parse ISA-Tab files with isatools. The `isa.def` file is the Singularity definition file, which must be used to build the singularity container.
 
+# Docker image usage
+
 ## How to get the Docker container
 
-### Build Docker from repo (requires internet connection)
+### Build Docker from repo 
 ```
 cd Docker/
 Docker build -t casperdevisser/isatools_environment .
