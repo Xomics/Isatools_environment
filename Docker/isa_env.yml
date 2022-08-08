@@ -83,6 +83,7 @@ dependencies:
   - wcwidth=0.2.5=py_0
   - webencodings=0.5.1=py38_1
   - wheel=0.35.1=pyhd3eb1b0_0
+  - xlrd=1.2.0
   - xz=5.2.5=h7b6447c_0
   - yaml=0.2.5=h7b6447c_0
   - zeromq=4.3.4=h2531618_0

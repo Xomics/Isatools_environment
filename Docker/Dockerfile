@@ -1,4 +1,4 @@
-# Dockerfile VERSION = v0.2
+# Dockerfile VERSION = v0.3
 # docker build -t casperdevisser/isatools_environment:$VERSION . 
 # docker push casperdevisser/isatools_environment:$VERSION
 
