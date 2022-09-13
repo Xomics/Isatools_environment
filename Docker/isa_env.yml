@@ -113,6 +113,7 @@ dependencies:
     - python-utils==2.5.6
     - pytz==2021.1
     - pyyaml==5.4.1
+    - rdflib==6.0.2
     - requests==2.25.1
     - soupsieve==2.2.1
     - jupyterlab==3.0.14

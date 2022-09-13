@@ -43,7 +43,7 @@ Docker build -t casperdevisser/isatools_environment .
 ### Pull Docker image from DockerHub 
 
 ```
-docker pull casperdevisser/isatools_environment:latest
+docker pull casperdevisser/isatools_environment:v0.4
 ```
 
 ## When working on the Digital Research Environment (DRE):
