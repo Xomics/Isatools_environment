@@ -1,17 +1,19 @@
-# Dockerfile VERSION = v0.5
-# docker build -t casperdevisser/isatools_environment:$VERSION . 
+# Dockerfile VERSION = v0.6
+# docker build --build-arg BUILD_DATE=$(date -u +'%Y-%m-%dT%H:%M:%SZ') -t casperdevisser/isatools_environment:$VERSION . 
 # docker push casperdevisser/isatools_environment:$VERSION
 
 FROM continuumio/miniconda3
 
-LABEL build_data="24-05-2022"
-LABEL vendor="Radboudumc, CMBI"
+ARG DEBIAN_FRONTEND=noninteractive
+ARG BUILD_DATE
+
+LABEL org.label-schema.build-date=$BUILD_DATE
+LABEL org.label-schema.vendor="Radboudumc, Medical Biosciences department"
+LABEL maintainer="casper.devisser@radboudumc.nl"
 LABEL usage="https://github.com/Xomics/Isatools_environment"
 LABEL url="https://github.com/Xomics/Isatools_environment"
 
 WORKDIR /isa_container
-
-ARG DEBIAN_FRONTEND=noninteractive
 
 #Installing git and nano
 RUN apt-get update -y 
